@@ -16,6 +16,7 @@ export default function (state = initialState, action) {
             }
         }
         case FETCH_DONE: {
+            console.log("fetch done", action.payload)
             return {
                 ...state,
                 loading: false,

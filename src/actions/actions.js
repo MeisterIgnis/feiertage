@@ -10,21 +10,22 @@ export const fetchError = (error) => ({
     payload: {error}
 })
 
-export const fetchDATA = () => ({
+export const fetchData = () => ({
     type: FETCH_DATA
 })
 
 export function fetchStart() {
     return dispatch => {
-        dispatch(fetchDATA());
+        dispatch(fetchData());
         return fetch("https://feiertage-api.de/api/?jahr=2020&nur_land=MV")
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
-                dispatch(FETCH_DONE(json.products));
-                return json.products;
+                console.log("fetched already")
+                dispatch(fetchDone(json));
+                return json;
             })
-            .catch(error => dispatch(FETCH_ERROR(error)));
+            .catch(error => dispatch(fetchError(error)));
     };
 }
 

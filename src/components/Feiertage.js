@@ -1,11 +1,14 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
 import { fetchStart} from '../actions/actions.js';
 
 
-export default function (items)
+export default function ({items,dispatch})
 {
-    componentDidMount();
+    useEffect(() => {
+        dispatch(fetchStart())
+      },[]);
+    
 
     console.table(items);
     return(

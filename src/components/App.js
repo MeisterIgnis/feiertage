@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/App.css';
-import ConnectedFeiertage from '../components/Feiertage.js';
+import ConnectedFeiertage from '../containers/ConnectedFeiertage';
 
 function App() {
   return (

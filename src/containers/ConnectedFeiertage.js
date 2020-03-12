@@ -6,7 +6,7 @@ const mapStateToProps = (items) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-
+    dispatch
 });
 
 export default connect(
