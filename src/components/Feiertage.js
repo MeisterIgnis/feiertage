@@ -1,8 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchStart} from '../actions/actions.js';
 
 
-export default function ()
+export default function (items)
 {
+    componentDidMount();
+
+    console.table(items);
     return(
         <div>
             <ul>
@@ -12,3 +17,8 @@ export default function ()
         </div>
     )
 }
+
+/*function componentDidMount() {
+    props.dispatch(fetchStart());
+}*/
+

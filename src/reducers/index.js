@@ -2,7 +2,7 @@ import { FETCH_DATA, FETCH_DONE, FETCH_ERROR} from '../actions/actionTypes';
 
 const initialState = {
     items: [],
-    error: false,
+    error: null,
     loading: false
 }
 
@@ -10,17 +10,24 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case FETCH_DATA: {
             return {
-                ...state
+                ...state,
+                loading: true,
+                error: null
             }
         }
         case FETCH_DONE: {
             return {
-                ...state
+                ...state,
+                loading: false,
+                items: action.payload
             }
         }
         case FETCH_ERROR: {
             return {
-                ...state
+                ...state,
+                loading: false,
+                error: action.payload,
+                items: []
             }
         }
         default: {
