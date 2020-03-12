@@ -1,27 +1,33 @@
-import React,{useEffect} from 'react';
-import { connect } from 'react-redux';
-import { fetchStart} from '../actions/actions.js';
+import React, { useEffect } from 'react';
+import { fetchStart } from '../actions/actions.js';
 
+const Entry = (items) => {
 
-export default function ({items,dispatch})
-{
+    if (items !== undefined) {
+        return (
+            <li>{items.data}</li>
+        )
+    }
+}
+
+export default function ({ items, dispatch }) {
     useEffect(() => {
         dispatch(fetchStart())
-      },[]);
-    
+    }, []);
 
-    console.table(items);
-    return(
+    return (
         <div>
             <ul>
-                <li>Montag</li>
-                <li>Dienstag</li>
+                {
+                    Object.keys(items).map((e, i) =>
+                        <Entry
+                            key={i}
+                            data={e}
+                        />
+                    )
+                }
             </ul>
         </div>
     )
 }
-
-/*function componentDidMount() {
-    props.dispatch(fetchStart());
-}*/
 

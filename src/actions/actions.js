@@ -21,7 +21,6 @@ export function fetchStart() {
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
-                console.log("fetched already")
                 dispatch(fetchDone(json));
                 return json;
             })

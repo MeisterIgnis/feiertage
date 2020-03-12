@@ -16,18 +16,17 @@ export default function (state = initialState, action) {
             }
         }
         case FETCH_DONE: {
-            console.log("fetch done", action.payload)
             return {
                 ...state,
                 loading: false,
-                items: action.payload
+                items: action.payload.items
             }
         }
         case FETCH_ERROR: {
             return {
                 ...state,
                 loading: false,
-                error: action.payload,
+                error: action.payload.items,
                 items: []
             }
         }

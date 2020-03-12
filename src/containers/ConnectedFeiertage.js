@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import Feiertage from '../components/Feiertage.js';
 
-const mapStateToProps = (items) => ({
-    items
+const mapStateToProps = (state) => ({
+    items: state.items
 });
 
 const mapDispatchToProps = dispatch => ({
