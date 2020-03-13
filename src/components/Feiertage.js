@@ -21,7 +21,7 @@ export default function ({ items, dispatch }) {
     console.log(items)
     return (
         <div>
-            <table className="table-fixed">
+            <table className="table-auto">
                 <tr>
                     <th className={cellClass}>Datum</th>
                     <th className={cellClass}>Feiertage</th>
