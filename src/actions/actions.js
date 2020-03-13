@@ -1,4 +1,5 @@
 import {FETCH_DONE, FETCH_ERROR, FETCH_DATA} from './actionTypes';
+//import jsonData from "../feiertage.json";
 
 export const fetchDone = (items) => ({
     type: FETCH_DONE,
@@ -17,11 +18,11 @@ export const fetchData = () => ({
 export function fetchStart() {
     return dispatch => {
         dispatch(fetchData());
-        return fetch("https://feiertage-api.de/api/?jahr=2020&nur_land=MV")
+        return fetch("https://feiertage-api.de/api/?jahr=2020")
+        //return fetch(JSON.parse(jsonData))
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
-                console.log(json)
                 dispatch(fetchDone(json));
                 return json;
             })
