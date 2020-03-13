@@ -24,7 +24,7 @@ export default function ({ items, dispatch }) {
     
     
     console.log(items)
-    const items2 = items[Object.keys(items)[0]]
+    const items2 = items[0]
     console.log(items2)
 
 

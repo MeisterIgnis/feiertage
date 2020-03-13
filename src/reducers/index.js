@@ -9,6 +9,14 @@ function assoc(obj, k, data){
     obj[k] = data
     return obj
 }
+
+function map2seq(obj,assocfn){
+    return  Object.keys(obj).map(k => assocfn(obj,k))
+}
+
+function assoc2Name(o,k){
+    return assoc({...o[k]},"name",k)
+}
 export default function (state = initialState, action) {
     switch (action.type) {
         case FETCH_DATA: {
@@ -21,7 +29,10 @@ export default function (state = initialState, action) {
         case FETCH_DONE: {
             const items=action.payload.items
             //const items2= Object.values(items)//
-            const items2 = Object.keys(items).map(name => assoc({...items[name]},"name",name))
+            const bl=items["NATIONAL"]
+            console.log(bl)
+            const items2 = map2seq(bl, assoc2Name)
+            console.log(items2)
             return {
                 ...state,
                 loading: false,
