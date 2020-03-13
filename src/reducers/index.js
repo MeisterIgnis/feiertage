@@ -2,7 +2,8 @@ import { FETCH_DATA, FETCH_DONE, FETCH_ERROR, SET_STATE_FILTER} from '../actions
 
 
 const initialState = {
-    items: [],
+    items: [], //rohdaten
+    itemsToShow: [], //anzeigedaten
     error: null,
     loading: false,
     stateFilter: 16,
@@ -34,12 +35,12 @@ export default function (state = initialState, action) {
             const items=action.payload.items
             //const items2= Object.values(items)//
             const bl=items[state.states[state.stateFilter]]
-            console.log(bl)
-            const items2 = map2seq(bl, assoc2Name)
+            const itemsToShow = map2seq(bl, assoc2Name)
             return {
                 ...state,
                 loading: false,
-                items: items2
+                items,
+                itemsToShow
             }
         }
         case FETCH_ERROR: {
@@ -52,9 +53,15 @@ export default function (state = initialState, action) {
         }
         case SET_STATE_FILTER: {
             const stateFilter = action.payload.filter
+            const items=state.items
+            console.log("state filter " , stateFilter)
+            const bl=items[state.states[stateFilter]]
+            console.log(bl)
+            const itemsToShow = map2seq(bl, assoc2Name)
             return {
                 ...state,
-                stateFilter
+                stateFilter,
+                itemsToShow
             }
         }
         default: {
