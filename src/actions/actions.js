@@ -1,4 +1,4 @@
-import {FETCH_DONE, FETCH_ERROR, FETCH_DATA} from './actionTypes';
+import {FETCH_DONE, FETCH_ERROR, FETCH_DATA, SET_STATE_FILTER} from './actionTypes';
 //import jsonData from "../feiertage.json";
 
 export const fetchDone = (items) => ({
@@ -13,6 +13,11 @@ export const fetchError = (error) => ({
 
 export const fetchData = () => ({
     type: FETCH_DATA
+})
+
+export const setStateFilter = (filter) => ({
+    type: SET_STATE_FILTER,
+    payload: {filter}
 })
 
 export function fetchStart() {

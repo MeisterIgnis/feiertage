@@ -1,9 +1,12 @@
-import { FETCH_DATA, FETCH_DONE, FETCH_ERROR} from '../actions/actionTypes';
+import { FETCH_DATA, FETCH_DONE, FETCH_ERROR, SET_STATE_FILTER} from '../actions/actionTypes';
+
 
 const initialState = {
     items: [],
     error: null,
-    loading: false
+    loading: false,
+    stateFilter: 16,
+    states: ["BW", "BY", "BE", "BB", "HB", "HH", "HE", "MV", "NI", "NW", "RP", "SL", "SN", "ST", "SH", "TH", "NATIONAL"]
 }
 function assoc(obj, k, data){
     obj[k] = data
@@ -18,6 +21,7 @@ function assoc2Name(o,k){
     return assoc({...o[k]},"name",k)
 }
 export default function (state = initialState, action) {
+    console.log(state.stateFilter)
     switch (action.type) {
         case FETCH_DATA: {
             return {
@@ -29,10 +33,9 @@ export default function (state = initialState, action) {
         case FETCH_DONE: {
             const items=action.payload.items
             //const items2= Object.values(items)//
-            const bl=items["NATIONAL"]
+            const bl=items[state.states[state.stateFilter]]
             console.log(bl)
             const items2 = map2seq(bl, assoc2Name)
-            console.log(items2)
             return {
                 ...state,
                 loading: false,
@@ -45,6 +48,13 @@ export default function (state = initialState, action) {
                 loading: false,
                 error: action.payload.items,
                 items: []
+            }
+        }
+        case SET_STATE_FILTER: {
+            const stateFilter = action.payload.filter
+            return {
+                ...state,
+                stateFilter
             }
         }
         default: {

@@ -21,15 +21,7 @@ export default function ({ items, dispatch }) {
     useEffect(() => {
         dispatch(fetchStart())
     }, []);
-    
-    
-    console.log(items)
-    const items2 = items[0]
-    console.log(items2)
 
-
-    //const items2 = items[16];
-    //console.log(items2)
     return (
         <div>
             <table className="table-auto">
@@ -37,6 +29,7 @@ export default function ({ items, dispatch }) {
                     <tr>
                         <th className={cellClass}>Datum</th>
                         <th className={cellClass}>Feiertage</th>
+                        <th className={cellClass}>Hinweis</th>
                     </tr>
                 </thead>
                 {
