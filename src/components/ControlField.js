@@ -1,8 +1,4 @@
-import React, { useEffect } from 'react';
-import { fetchStart } from '../actions/actions.js';
-
-
-
+import React from 'react';
 
 export default function ({setStateFilter, state,value}) {
 

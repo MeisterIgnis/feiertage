@@ -4,6 +4,7 @@ import { setStateFilter } from '../actions/actions.js';
 
 const mapStateToProps = (state) => ({
     value: state.stateFilter,
+    selected: state.stateFilter,
     state
 });
 

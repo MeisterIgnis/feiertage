@@ -22,7 +22,6 @@ function assoc2Name(o,k){
     return assoc({...o[k]},"name",k)
 }
 export default function (state = initialState, action) {
-    console.log(state.stateFilter)
     switch (action.type) {
         case FETCH_DATA: {
             return {
@@ -54,9 +53,7 @@ export default function (state = initialState, action) {
         case SET_STATE_FILTER: {
             const stateFilter = action.payload.filter
             const items=state.items
-            console.log("state filter " , stateFilter)
             const bl=items[state.states[stateFilter]]
-            console.log(bl)
             const itemsToShow = map2seq(bl, assoc2Name)
             return {
                 ...state,

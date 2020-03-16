@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { fetchStart } from '../actions/actions.js';
 
 const cellClass = "border px-4 py-2";
+const hinweisCell = "border px-4 py-2 text-xs"
 
 const Entry = (item) => {
     //console.log(item)
@@ -11,7 +12,7 @@ const Entry = (item) => {
             <tr>
                 <td className={cellClass}>{datum}</td>
                 <td className={cellClass}>{name}</td>
-                <td className={cellClass}>{hinweis}</td>
+                <td className={hinweisCell}>{hinweis}</td>
             </tr>
         </tbody>
     )
@@ -20,10 +21,11 @@ const Entry = (item) => {
 export default function ({ items, dispatch }) {
     useEffect(() => {
         dispatch(fetchStart())
-    }, []);
+    }, [dispatch]);
 
     return (
         <div>
+            
             <table className="table-auto">
                 <thead>
                     <tr>
