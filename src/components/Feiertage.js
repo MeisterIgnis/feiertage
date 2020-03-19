@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { fetchStart } from '../actions/actions.js';
+import '../css/App.css'
 
-const cellClass = "border px-4 py-2";
-const hinweisCell = "border px-4 py-2 text-xs"
+const cellClass = "border px-4 py-2 cell";
+const hinweisCell = "border px-4 py-2 text-xs cell"
 
 const Entry = (item) => {
     //console.log(item)
@@ -26,7 +27,7 @@ export default function ({ items, dispatch }) {
     return (
         <div>
             
-            <table className="table-auto">
+            <table className="table-fixed">
                 <thead>
                     <tr>
                         <th className={cellClass}>Datum</th>
